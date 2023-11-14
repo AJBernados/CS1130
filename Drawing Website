@@ -1,0 +1,44 @@
+<head>
+<title>Drawing website</title>
+
+<style>
+canvas {
+    border: 1px solid black;
+}
+</style>
+
+<script>
+function init() {
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+
+    var isDrawing = false;
+
+    canvas.addEventListener('mousedown', function(e) {
+        isDrawing = true;
+        ctx.beginPath();
+        ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+    });
+
+    canvas.addEventListener('mousemove', function(e) {
+        if (!isDrawing) return;
+        ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+        ctx.stroke();
+    });
+
+    canvas.addEventListener('mouseup', function() {
+        isDrawing = false;
+    });
+}
+</script>
+
+</head>
+<body onload="init()">
+
+<canvas id="canvas" width="1800" height="1600"></canvas><br>
+
+<a href="https://japhub-ict.w3spaces.com/">Click to go back</a>
+
+
+</body>
+</html>
