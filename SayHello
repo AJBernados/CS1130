@@ -1,0 +1,44 @@
+ </head>
+ <body>
+
+    <h1> This page says hello.</h1>
+    <h2>Welcome to my awesome space</h2>
+    <h3>Welcome to my awesome space</h3>
+    <h4>Welcome to my awesome space</h4>
+    <h5>Welcome to my awesome space</h5>
+    <h6>Welcome to my awesome space</h6>
+    <style>
+    h1 {color:red;}
+    h2 {color:orange;}
+    h3 {color:yellow;}
+    h4 {color:green;}
+    h5 {color:blue;}
+    h6 {color:indigo;}
+    p  {color: violet;}
+    </style><br>
+   
+   <p id = "p1">That's Gay</p><br>
+
+  <label for="fname">Write your name:</label>
+  <input id="fname" type="text" >
+  <button onclick="Sayhello()">Enter</button><br>
+  <h1 id="Hellomsg"></h1><br>
+  <a href="https://japhub-ict.w3spaces.com/">Click to go back</a>
+    
+<script>
+
+ function Sayhello()
+{
+    var uname;
+
+     uname = document.getElementById("fname").value;
+
+     document.getElementById("Hellomsg").innerHTML = 'Bonjour ' +uname;
+     document.getElementById("fname").value = '';  
+     document.getElementById("p1").innerHTML = '';
+}
+
+</script>
+
+</body>
+</html>
