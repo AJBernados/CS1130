@@ -1,0 +1,76 @@
+ <!DOCTYPE html>
+<html>
+<title>Grade Computation</title>
+<body>
+<h1> Compute your grade </h1>
+<br><br>
+<label for="score">Score:</label><br>
+<input id="score" type="number"><br>
+<label for="items">Items:</label><br>
+<input id="items" type="number"><br>
+<label for="base">Base:</label><br>
+<input id="base" type="number"><br><br>
+<button onclick="computegrade()">Compute Grade</button><br><br><br>
+<label for="grade">Grade:</label><br>
+<input id="grade" type="number" readonly><br>
+<label for="lettergrade">Equivalent Grade:</label><br>
+<input id="lettergrade" type="text" readonly><br>
+<br>
+<h1 id="comment"></h1>
+
+<br><br>
+<a href="https://japhub-ict.w3spaces.com/index.html">Back to Home Page</a>
+<br>
+<script>
+function computegrade()
+{
+    var score,items,base,g,lg,cm,cp;
+    
+    score = document.getElementById("score").value*1;
+    items = document.getElementById("items").value*1;
+    base = document.getElementById("base").value*1;
+
+    g = base + (score/items)*(100-base);
+
+    document.getElementById("grade").value=g;
+   //  F < 72, D 72-75, C 76-79, C+ 80 - 83, B=84-87, B+ =88-91, A=9-100
+
+   if (g<72) lg='F'
+   else if (g<=75) lg='D'
+   else if (g<=79) lg='C'
+   else if (g<=83) lg='C+'
+   else if (g<=87) lg='B'
+   else if (g<=91) lg='B+'
+   else lg='A';
+
+   document.getElementById("lettergrade").value=lg;
+
+    switch (lg)
+    {
+       case 'F': cm='Failing';
+                 cp='a';
+                 break;
+       case  'D': cm='Passing';
+                 cp='a';
+                 break;
+       case  'C':
+       case  'C+': cm='Average ';
+                 cp='an';
+                 break;
+       case  'B': cm='Good';
+                 cp='a';
+                 break;
+       case  'B+': cm='Very Good';
+                 cp='a';
+                 break;
+       default : cm ='Excellent';
+                 cp ='an';
+                 break;            
+      } 
+      document.getElementById("comment").innerHTML
+          = 'This is '+cp+' '+cm+' grade.';
+}
+
+</script>
+</body>
+</html>
