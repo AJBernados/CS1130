@@ -1,0 +1,31 @@
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>The Portfolio</title>
+    <link rel="stylesheet" href="Portfolio.css" />
+  </head>
+  <body>
+    <div class="hero">
+      <nav>
+        <img src="https://i.pinimg.com/originals/91/09/79/910979a5f0722da3fccb2e1032dc3100.jpg" class="logo" />
+        <ul>
+          <li><a href="#">Skills</a></li>
+          <li><a href="#">Experience</a></li>
+          <li><a href="#">Education</a></li>
+          <li><a href="#">Shopee</a></li>
+        </ul>
+        <a href="https://japhub-ict.w3spaces.com/index.html" class="btn">Go Back</a>
+      </nav>
+
+      <div class="content">
+        <span class="title">Hello World</span>
+        <h1>Nihao, Watashi wa<span> Jepoy</span></h1>
+        <p>
+           Programmer approved by Kobe.
+        </p>
+        <a href="https://www.adultswim.com/etcetera/elastic-man/" class="btn">Hire me pls</a>
+      </div>
+    </div>
+  </body>
+</html>
