@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('construction-background.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: rgb(0, 0, 0);
+            position: relative;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+        img {
+            max-width: 100%;
+            height: 300px;
+            width: 300px;
+            position: absolute;
+            top: 6%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+        }
+
+        a {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #fff;
+            color: #333;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+    <title>Under Construction</title>
+</head>
+<body>
+    <img src="Built.jpg" alt="Under Construction"/>
+    <h1>Under Construction</h1>
+    <p>We're working on something awesome. Stay tuned!</p>
+    <a href="file:///C:/Website/Navigation/Navigation.html" onclick="goBack()">Go Back</a>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
