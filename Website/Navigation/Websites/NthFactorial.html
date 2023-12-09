@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nth Factorial, Sum and Average</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #352f2f;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #dbcfcf;
+            text-align: center;
+        }
+
+        label {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #dbcfcf;
+        }
+
+        input {
+            padding: 8px;
+            font-size: 1em;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 1em;
+            background-color: #8f6d6d ;
+            color: #352f2f;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #dbcfcf;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #dbcfcf;
+        }
+
+        p {
+            font-size: 1.1em;
+            margin: 5px 0;
+            color: #dbcfcf;
+        }
+        .GoBack {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            padding: 10px;
+            font-size: 1em;
+            background-color: #ebd4d4;
+            color: #352f2f;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+.external-link-button:hover {
+    background-color: #dbcfcf;
+}
+    </style>
+</head>
+<body>
+
+    <h1>Nth Factorial, Sum and Average</h1>
+
+    <label for="inputNumber">Enter an integer (N): </label>
+    <input type="number" id="inputNumber" min="0" step="1">
+    <button onclick="calculate()">Calculate</button>
+
+    <h2>Results:</h2>
+    <p id="factorialResult"></p>
+    <p id="sumResult"></p>
+    <p id="averageResult"></p>
+
+    <a href="IntroPrograms.html" class="GoBack">Go Back</a>
+
+    <script>
+        function calculate() {
+            var n = parseInt(document.getElementById('inputNumber').value);
+            var factorial = 1;
+            var i = 1;
+            while (i <= n) {
+                factorial *= i;
+                i++;
+            }
+            var sum = 0;
+            var j = 1;
+            do {
+                sum += j;
+                j++;
+            } while (j <= n);
+            var average = 0;
+            for (var k = 1; k <= n; k++) {
+                average += k;
+            }
+            average /= n;
+            document.getElementById('factorialResult').innerHTML = 'Factorial: ' + factorial;
+            document.getElementById('sumResult').innerHTML = 'Sum: ' + sum;
+            document.getElementById('averageResult').innerHTML = 'Average: ' + average.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>

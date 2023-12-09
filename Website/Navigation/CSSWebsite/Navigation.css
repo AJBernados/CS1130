@@ -1,0 +1,175 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+}
+#bgVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.card-container {
+    text-decoration: none;
+    display: flex;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+}
+.card-container a{
+    text-decoration: none;
+    background-color: rgb(41, 40, 40);
+    color: antiquewhite;
+    padding: 15px 20px; 
+    display: block;
+    text-align: center;
+    margin: 20px 50px;
+    border-radius: 20px;
+}
+.card-container .card2button{
+    position: absolute;
+    bottom: -25px; 
+    padding: 15px 45px; 
+    text-decoration: none;
+    background-color: rgb(41, 40, 40);
+    color: antiquewhite;
+    border-radius: 20px;
+} 
+.card-container .card3button{
+    position: absolute;
+    bottom: -25px; 
+    padding: 15px 45px; 
+    text-decoration: none;
+    background-color: rgb(41, 40, 40);
+    color: antiquewhite;
+    border-radius: 20px;
+}
+.card-container a:hover{
+   transform: scale(1.2);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
+}
+.card {
+    display: grid;
+    grid-template-columns: 300px;
+    grid-template-rows: 210px 250px 20px; 
+    grid-template-areas: "image" "text";
+    font-family: 'Roboto', sans-serif;
+    border-radius: 18px;
+    color: antiquewhite;
+    background: #1d1d11;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+    text-align: justify;
+    position: relative;
+    z-index: 3;
+    transition: 0.5s ease;
+    cursor: pointer;
+    margin: 30px;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+}
+.card:before {
+    content: "";
+    background: linear-gradient(45deg,
+        #ff0000 0%,
+        #ff9a00 10%,
+        #d0de21 20%,
+        #4fdc4a 30%,
+        #3fdad8 40%,
+        #2fc9e2 50%,
+        #1c7fee 60%,
+        #5f15f2 70%,
+        #ba0cf8 80%,
+        #fb07d9 90%,
+        #ff0000 100%
+    ) repeat 0% 0% / 300% 100%;
+    position: absolute;
+    inset: -3px;
+    border-radius: 16px;
+    filter: blur(8px);
+    animation: rgb 6s linear infinite;
+    transform: translateZ(-1px);
+}
+@keyframes rgb {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+.card-image {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-size: cover;
+}
+.card-1 .card-image {
+    grid-area: image;
+    background: linear-gradient(#fff0 0%, #fff0 70%, #1d1d11 100%), url('../DigitalMedia/Image1.png');
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-size: cover;
+}
+.card-2 .card-image {
+    grid-area: image;
+    background: linear-gradient(#fff0 0%, #fff0 70%, #1d1d11 100%), url('../DigitalMedia/Image2.png');
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-size: cover;
+}
+.card-3 .card-image {
+    grid-area: image;
+    background: linear-gradient(#fff0 0%, #fff0 70%, #1d1d11 100%), url('../DigitalMedia/Image3.jpg');
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-size: cover;
+}
+.card-text{
+    grid-area: text;
+    margin: 25px;
+    transform: translateZ(30px);
+    text-align: left;
+}
+.card .card-text p {
+    color: grey;
+    font-size: 14px;
+    font-weight: 300;
+}
+.card .card-text h2 {
+    margin-top: 0px;
+    font-size: 28px;
+}
+.card .card-bottom {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background: rgb(41, 40, 40);
+}
+.card:hover {
+    transform: scale(1.2);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
+}
+.js-tilt-glare{
+    border-radius: 18px;
+}
+.music-button {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 999; 
+    transition: transform 0.3s ease; 
+}
+.music-button:hover {
+    transform: scale(1.1); 
+}

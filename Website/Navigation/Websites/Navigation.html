@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <link rel="stylesheet" type="text/css" href="../CSSWebsite/Navigation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+</head>
+<body>
+
+    <audio id="backgroundMusic" autoplay loop>
+        <source src="../DigitalMedia/ArthurNery-CottonCandy.mp3" type="audio/mp3">
+    </audio>
+
+    <div class="background-video">
+        <video autoplay muted loop id="bgVideo">
+            <source src="../DigitalMedia/Night.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="card-container">
+        <div class="card card-1 rgb" data-tilt data-tilt-scale="1.1">
+            <div class="card-image"></div>
+            <div class="card-text">
+                <h2>Digital Portfolio</h2>
+                <p>Explore my diverse portfolio showcasing a tapestry of projects, experiences, and creative endeavors that define my journey and reflect my skills and passions.</p>
+                <a href="UnderContruction.html">Continue</a>
+            </div>
+            <div class="card-bottom"></div>
+        </a>
+        </div>
+
+        <div class="card card-2 rgb" data-tilt data-tilt-scale="1.1">
+            <div class="card-image"></div>
+            <div class="card-text">
+                <h2>About me</h2>
+                <p>Explore the journey of who I am and what I'm passionate about by delving into my personal narrative and experiences.</p>
+                <a href="UnderContruction.html" div class="card2button">Continue</a>
+            </div>
+            <div class="card-bottom"></div>
+        </div>
+
+        <div class="card card-3 rgb" data-tilt data-tilt-scale="1.1">
+            <div class="card-image"></div>
+            <div class="card-text">
+                <h2>Programs</h2>
+                <p>Discover more about my programs and what I have to offer.</p>
+                <a href="IntroPrograms.html" div class="card3button">Continue</a>
+            </div>
+            <div class="card-bottom"></div>
+        </div>
+    </div>
+
+    <button id="toggleMusic" class="music-button" onclick="toggleBackgroundMusic()">
+        <i id="musicIcon" class="fas fa-music"></i>
+    </button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            VanillaTilt.init(document.querySelectorAll(".card"), {
+                glare: true,
+                reverse: true,
+                "max-glare": 0.5
+            });
+        });
+
+        var audio = document.getElementById("backgroundMusic");
+        var musicIcon = document.getElementById("musicIcon");
+
+        function toggleBackgroundMusic() {
+            if (audio.paused) {
+                audio.play();
+                musicIcon.classList.remove("fa-play");
+                musicIcon.classList.add("fa-pause");
+            } else {
+                audio.pause();
+                musicIcon.classList.remove("fa-pause");
+                musicIcon.classList.add("fa-play");
+            }
+        }
+    </script>
+   
+</body>
+</html>

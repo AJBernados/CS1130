@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Slider JavaScript | CodingNepal</title>
+    <link rel="stylesheet" href="slide.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+ 
+  </head>
+  <body>
+    <section class="wrapper">
+      <i class="fa-solid fa-arrow-left button" id="prev"></i>
+      <div class="image-container">
+        <div class="carousel">
+          <img src="Image1.png" alt="" />
+          <img src="Image2.png" alt="" />
+          <img src="Image3.jpg" alt="" />
+          <img src="Picture1.jpg" alt="" />
+        </div>
+        <i class="fa-solid fa-arrow-right button" id="next"></i>
+      </div>
+      <script>
+
+        // Get the DOM elements for the image carousel
+const wrapper = document.querySelector(".wrapper"),
+  carousel = document.querySelector(".carousel"),
+  images = document.querySelectorAll("img"),
+  buttons = document.querySelectorAll(".button");
+
+let imageIndex = 1,
+  intervalId;
+
+// Define function to start automatic image slider
+const autoSlide = () => {
+  // Start the slideshow by calling slideImage() every 2 seconds
+  intervalId = setInterval(() => slideImage(++imageIndex), 2000);
+};
+// Call autoSlide function on page load
+autoSlide();
+
+// A function that updates the carousel display to show the specified image
+const slideImage = () => {
+  // Calculate the updated image index
+  imageIndex = imageIndex === images.length ? 0 : imageIndex < 0 ? images.length - 1 : imageIndex;
+  // Update the carousel display to show the specified image
+  carousel.style.transform = `translate(-${imageIndex * 100}%)`;
+};
+
+// A function that updates the carousel display to show the next or previous image
+const updateClick = (e) => {
+  // Stop the automatic slideshow
+  clearInterval(intervalId);
+  // Calculate the updated image index based on the button clicked
+  imageIndex += e.target.id === "next" ? 1 : -1;
+  slideImage(imageIndex);
+  // Restart the automatic slideshow
+  autoSlide();
+};
+
+// Add event listeners to the navigation buttons
+buttons.forEach((button) => button.addEventListener("click", updateClick));
+
+// Add mouseover event listener to wrapper element to stop auto sliding
+wrapper.addEventListener("mouseover", () => clearInterval(intervalId));
+// Add mouseleave event listener to wrapper element to start auto sliding again
+wrapper.addEventListener("mouseleave", autoSlide);
+
+
+      </script>
+    </section>
+  </body>
+</html>
