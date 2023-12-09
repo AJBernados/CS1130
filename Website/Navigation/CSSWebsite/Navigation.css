@@ -113,21 +113,21 @@ body {
 }
 .card-1 .card-image {
     grid-area: image;
-    background: linear-gradient(#fff0 0%, #fff0 70%, #1d1d11 100%), url('Website/Navigation/DigitalMedia/Image1.png');
+    background: linear-gradient(#fff0 0%, #fff0 70%, #1d1d11 100%), url('Navigation/DigitalMedia/Image1.png');
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     background-size: cover;
 }
 .card-2 .card-image {
     grid-area: image;
-    background: linear-gradient(#fff0 0%, #fff0 70%, #1d1d11 100%), url('Website/Navigation/DigitalMedia/Image2.png');
+    background: linear-gradient(#fff0 0%, #fff0 70%, #1d1d11 100%), url('Navigation/DigitalMedia/Image2.png');
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     background-size: cover;
 }
 .card-3 .card-image {
     grid-area: image;
-    background: linear-gradient(#fff0 0%, #fff0 70%, #1d1d11 100%), url('Website/Navigation/DigitalMedia/Image3.jpg');
+    background: linear-gradient(#fff0 0%, #fff0 70%, #1d1d11 100%), url('Navigation/DigitalMedia/Image3.jpg');
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     background-size: cover;
