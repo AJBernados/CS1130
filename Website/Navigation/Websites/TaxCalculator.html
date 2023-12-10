@@ -57,26 +57,27 @@
             background-color: #4d2f2f;
         }
         .result-container {
-            height: 50px; /* Set a fixed height for the result container */
-            overflow: hidden; /* Hide overflow content */
+            height: 50px; 
+            overflow: hidden; 
         }
         #result {
             font-size: 1.1em;
             color: #ffffff;
-            overflow: hidden; /* Hide overflow content */
+            overflow: hidden;
         }
         #GoBack {
             position: fixed;
             top: 10px;
             left: 10px;
+            display: block;
             background-color: whitesmoke;
             color: #2c1919;
             padding: 10px;
             text-decoration: none;
             border-radius: 4px;
             cursor: pointer;
-            z-index: 999;
         }
+        
     </style>
 </head>
 <body>
@@ -95,8 +96,9 @@
             <p id="result"></p>
         </div>
 
-        <a id="GoBack" href="IntroPrograms.html">Go Back</a> 
     </div>
+
+    <a id="GoBack" href="IntroPrograms.html">Go Back</a> 
 
     <script>
         function calculateIncomeTax() {
