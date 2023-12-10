@@ -15,19 +15,16 @@
             align-items: center;
             justify-content: center;
         }
-
         .container {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
         }
-
         h1 {
             color: #ffffff;
             text-align: center;
         }
-
         form {
             background-color: #ffffff;
             padding: 20px;
@@ -35,13 +32,11 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 350px;
         }
-
         label {
             font-size: 1em;
             margin-bottom: 10px;
             color: #2c1919;
         }
-
         input {
             padding: 8px;
             font-size: 1em;
@@ -49,7 +44,6 @@
             margin-bottom: 15px;
             box-sizing: border-box;
         }
-
         button {
             padding: 10px;
             font-size: 1em;
@@ -59,20 +53,21 @@
             border-radius: 4px;
             cursor: pointer;
         }
-
         button:hover {
             background-color: #4d2f2f;
         }
-
-        p {
-            font-size: 1.1em;
-            margin: 10px 0;
-            color: #ffffff;
+        .result-container {
+            height: 50px; /* Set a fixed height for the result container */
+            overflow: hidden; /* Hide overflow content */
         }
-
+        #result {
+            font-size: 1.1em;
+            color: #ffffff;
+            overflow: hidden; /* Hide overflow content */
+        }
         #GoBack {
             position: fixed;
-            top: -350px;
+            top: -330px;
             left: -750px;
             background-color: whitesmoke;
             color: #2c1919;
@@ -95,17 +90,17 @@
             <button type="button" onclick="calculateIncomeTax()">Calculate</button>
         </form>
 
-        <p id="result"></p>
+        <div class="result-container">
+            <p id="result"></p>
+        </div>
 
         <a id="GoBack" href="IntroPrograms.html">Go Back</a> 
     </div>
 
     <script>
         function calculateIncomeTax() {
-            // Get the taxable income from the input
             const taxableIncome = parseFloat(document.getElementById('taxableIncome').value);
 
-            // Perform income tax calculation based on the provided table
             let incomeTax = 0;
 
             if (taxableIncome <= 250000) {
@@ -122,7 +117,6 @@
                 incomeTax = 2410000 + 0.35 * (taxableIncome - 8000000);
             }
 
-            // Display the result
             document.getElementById('result').innerText = `Income Tax: PHP ${incomeTax.toFixed(2)}`;
         }
     </script>
