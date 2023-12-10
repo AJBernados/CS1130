@@ -148,7 +148,8 @@
             outputValue = inputValue / 3.28084;
         }
 
-        outputElement.innerHTML = "Output: " + outputValue.toFixed(2);
+        outputElement.innerHTML = "Output: " + outputValue.toFixed(0);
+
     }
 
     document.getElementById('goBackLink').addEventListener('click', function() {
