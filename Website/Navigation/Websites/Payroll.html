@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSSWebsite/Payroll.css">
+    <title>Payroll Program</title>
+    
+</head>
+<body>
+
+<h2>Payroll Program</h2>
+
+<div id="content-container">
+
+    <div id="left-section">
+        <form id="payrollForm">
+            <label for="employeeName">Employee's Name:</label>
+            <input type="text" id="employeeName" pattern="[A-Za-z]+" title="Please enter letters only" required>
+
+            <label for="daysWorked">Days Worked:</label>
+            <input type="number" id="daysWorked" required>
+
+            <label for="dailyRate">Daily Rate:</label>
+            <input type="number" id="dailyRate" required>
+
+            <label for="deductionAmount">Deduction Amount:</label>
+            <input type="number" id="deductionAmount" required>
+
+            <button type="button" onclick="addEmployee()">Add Employee</button>
+            <button type="button" onclick="openRemoveModal()">Remove Employee</button>
+            <button type="button" onclick="confirmClearTable()">Clear Table</button>
+        </form>
+    </div>
+
+    <div id="right-section">
+        <table id="payrollTable">
+            <tr>
+                <th>No.</th>
+                <th>Employee's Name</th>
+                <th>Days Worked</th>
+                <th>Daily Rate</th>
+                <th>Gross Pay</th>
+                <th>Deduction Amount</th>
+                <th>Net Pay</th>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+<div id="removeModal" class="modal">
+    <div class="modal-content">
+        <span onclick="closeRemoveModal()" style="float:right; cursor:pointer;">&times;</span>
+        <h3>Remove Employee</h3>
+        <label for="removeEmployeeName">Employee's Name:</label>
+        <input type="text" id="removeEmployeeName" required>
+        <button type="button" onclick="removeEmployeeByName()">Remove Employee</button>
+    </div>
+</div>
+
+<div id="clearTableModal" class="modal">
+    <div class="modal-content">
+        <span onclick="closeClearTableModal()" style="float:right; cursor:pointer;">&times;</span>
+        <h3>Confirmation</h3>
+        <p id="clearTableMessage">Are you sure you want to clear the table?</p>
+        <button type="button" onclick="clearTable()">Yes</button>
+        <button type="button" onclick="closeClearTableModal()">No</button>
+    </div>
+</div>
+
+<div id="messageModal" class="message-modal">
+    <div class="message-content">
+        <p id="messageText"></p>
+        <button type="button" onclick="clearFormAndCloseMessageModal()">OK</button>
+    </div>
+</div>
+
+<a href="../Websites/IntroPrograms.html" class="GoBack">Go Back</a>
+
+<script>
+    let payrollList = [];
+
+    let namesCounter = 0; 
+
+    function addEmployee() {
+    const employeeNameInput = document.getElementById("employeeName");
+    const employeeName = employeeNameInput.value.trim();
+
+    const inputs = document.querySelectorAll("#payrollForm input[required]");
+    if ([...inputs].some(input => !input.value.trim())) {
+        showMessage("Please input the required fields.");
+        return;
+    }
+
+    if (!employeeName || /[^A-Za-z]/.test(employeeName)) {
+        showMessage("Invalid name. Please enter letters only for the employee name.");
+        return;
+    }
+
+    const exists = payrollList.some(entry => entry.employeeName.toLowerCase() === employeeName.toLowerCase());
+
+    if (exists) {
+        showMessage("This employee already exists.");
+        return;
+    }
+
+    if (namesCounter >= 12) {
+        showMessage("Maximum names achieved.");
+        return;
+    }
+
+    const daysWorked = parseFloat(document.getElementById("daysWorked").value);
+    const dailyRate = parseFloat(document.getElementById("dailyRate").value);
+    const deductionAmount = parseFloat(document.getElementById("deductionAmount").value);
+
+    const grossPay = daysWorked * dailyRate;
+    const netPay = grossPay - deductionAmount;
+
+    const payrollEntry = {
+        employeeName,
+        daysWorked,
+        dailyRate,
+        grossPay,
+        deductionAmount,
+        netPay
+    };
+
+    payrollList.push(payrollEntry);
+    namesCounter++; // Increment the counter
+
+    updateTable();
+    clearForm();
+}
+
+    function openRemoveModal() {
+        document.getElementById("removeEmployeeName").value = "";
+        document.getElementById("removeModal").style.display = "block";
+    }
+
+    function closeRemoveModal() {
+        document.getElementById("removeModal").style.display = "none";
+    }
+
+    function removeEmployeeByName() {
+        const employeeNameToRemove = document.getElementById("removeEmployeeName").value.toLowerCase();
+        const indexToRemove = payrollList.findIndex(entry => entry.employeeName.toLowerCase() === employeeNameToRemove);
+
+        if (indexToRemove !== -1) {
+            payrollList.splice(indexToRemove, 1);
+            showMessage("Success!");
+
+            namesCounter--;
+        } else {
+            showMessage("That employee doesn't exist.");
+        }
+
+        updateTable();
+        closeRemoveModal();
+    }
+
+    function confirmClearTable() {
+        if (payrollList.length > 0) {
+            document.getElementById("clearTableModal").style.display = "block";
+        } else {
+            showMessage("There is nothing to clear.");
+        }
+    }
+
+    function clearTable() {
+        payrollList = [];
+        updateTable();
+        closeClearTableModal();
+        namesCounter = 0;
+    }
+
+    function closeClearTableModal() {
+        document.getElementById("clearTableModal").style.display = "none";
+    }
+
+    function updateTable() {
+        const table = document.getElementById("payrollTable");
+        table.innerHTML = "<tr><th>No.</th><th>Employee's Name</th><th>Days Worked</th><th>Daily Rate</th><th>Gross Pay</th><th>Deduction Amount</th><th>Net Pay</th></tr>";
+
+        payrollList.forEach((entry, index) => {
+            const row = table.insertRow();
+            const cellNo = row.insertCell(0);
+            const cellName = row.insertCell(1);
+            const cellDays = row.insertCell(2);
+            const cellRate = row.insertCell(3);
+            const cellGrossPay = row.insertCell(4);
+            const cellDeduction = row.insertCell(5);
+            const cellNetPay = row.insertCell(6);
+
+            cellNo.innerHTML = index + 1;
+            cellName.innerHTML = entry.employeeName;
+            cellDays.innerHTML = entry.daysWorked;
+            cellRate.innerHTML = entry.dailyRate;
+            cellGrossPay.innerHTML = entry.grossPay;
+            cellDeduction.innerHTML = entry.deductionAmount;
+            cellNetPay.innerHTML = entry.netPay;
+        });
+    }
+
+    function clearForm() {
+        document.getElementById("employeeName").value = "";
+        document.getElementById("daysWorked").value = "";
+        document.getElementById("dailyRate").value = "";
+        document.getElementById("deductionAmount").value = "";
+    }
+
+    function clearFormAndCloseMessageModal() {
+        clearForm();
+        closeMessageModal();
+    }
+
+    // Message Modal Functions
+    function showMessage(message) {
+        document.getElementById("messageText").innerText = message;
+        document.getElementById("messageModal").style.display = "block";
+    }
+
+    function closeMessageModal() {
+        document.getElementById("messageModal").style.display = "none";
+    }
+</script>
+
+</body>
+</html>
