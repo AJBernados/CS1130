@@ -179,27 +179,39 @@
     }
 
     function updateTable() {
-        const table = document.getElementById("payrollTable");
-        table.innerHTML = "<tr><th>No.</th><th>Employee's Name</th><th>Days Worked</th><th>Daily Rate</th><th>Gross Pay</th><th>Deduction Amount</th><th>Net Pay</th></tr>";
+    const table = document.getElementById("payrollTable");
+    table.innerHTML = "<tr><th>No.</th><th>Employee's Name</th><th>Days Worked</th><th>Daily Rate</th><th>Gross Pay</th><th>Deduction Amount</th><th>Net Pay</th></tr>";
 
-        payrollList.forEach((entry, index) => {
-            const row = table.insertRow();
-            const cellNo = row.insertCell(0);
-            const cellName = row.insertCell(1);
-            const cellDays = row.insertCell(2);
-            const cellRate = row.insertCell(3);
-            const cellGrossPay = row.insertCell(4);
-            const cellDeduction = row.insertCell(5);
-            const cellNetPay = row.insertCell(6);
+    let totalGrossPay = 0;
+    let totalDeduction = 0;
+    let totalNetPay = 0;
 
-            cellNo.innerHTML = index + 1;
-            cellName.innerHTML = entry.employeeName;
-            cellDays.innerHTML = entry.daysWorked;
-            cellRate.innerHTML = entry.dailyRate;
-            cellGrossPay.innerHTML = entry.grossPay;
-            cellDeduction.innerHTML = entry.deductionAmount;
-            cellNetPay.innerHTML = entry.netPay;
-        });
+    payrollList.forEach((entry, index) => {
+        const row = table.insertRow();
+        const cellNo = row.insertCell(0);
+        const cellName = row.insertCell(1);
+        const cellDays = row.insertCell(2);
+        const cellRate = row.insertCell(3);
+        const cellGrossPay = row.insertCell(4);
+        const cellDeduction = row.insertCell(5);
+        const cellNetPay = row.insertCell(6);
+
+        cellNo.innerHTML = index + 1;
+        cellName.innerHTML = entry.employeeName;
+        cellDays.innerHTML = entry.daysWorked;
+        cellRate.innerHTML = entry.dailyRate;
+        cellGrossPay.innerHTML = entry.grossPay;
+        cellDeduction.innerHTML = entry.deductionAmount;
+        cellNetPay.innerHTML = entry.netPay;
+
+        totalGrossPay += entry.grossPay;
+        totalDeduction += entry.deductionAmount;
+        totalNetPay += entry.netPay;
+    });
+
+    
+        const totalsRow = table.insertRow();
+        totalsRow.innerHTML = `<td colspan="4"></td><td>${totalGrossPay.toFixed(2)}</td><td>${totalDeduction.toFixed(2)}</td><td>${totalNetPay.toFixed(2)}</td>`;
     }
 
     function clearForm() {
