@@ -6,7 +6,7 @@
 html,body {
     margin: 0;
     padding: 0;
-    background-color: #343f4f;
+    background: none;
     overflow: hidden;
     font-family: 'Courier New', Courier, monospace;
     z-index: 1;
