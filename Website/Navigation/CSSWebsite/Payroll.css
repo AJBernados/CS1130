@@ -49,6 +49,7 @@ input {
     border: 1px solid #dbcfcf;
     border-radius: 4px;
     font-size: 14px;
+    text-align: right;
 }
 button {
     width: calc(100% - 16px);
