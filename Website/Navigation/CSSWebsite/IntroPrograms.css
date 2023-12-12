@@ -17,7 +17,7 @@ html,body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 1;
+  z-index: 0;
 }
 #bgVideo {
   width: 100%;
@@ -91,7 +91,6 @@ h2 {
     line-height: 1;
     text-align: center;
 }
-
 .col:nth-child(2) h2 {
     font-size: 24px;
     text-align: right;
@@ -108,6 +107,7 @@ h2 {
   display: flex;
   min-width: 55px;
   justify-content: center;
+  z-index: 1;
 }
 .nav_image img {
   height: 35px;
@@ -125,6 +125,7 @@ h2 {
   padding: 15px 10px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  background-color: #092635;
 }
 .sidebar.close {
   width: calc(55px + 20px);
@@ -134,7 +135,7 @@ h2 {
 }
 .logo_name {
   font-size: 22px;
-  color: #333;
+  color: #5C8374;
   font-weight: 500px;
   transition: all 0.3s ease;
 }
@@ -147,7 +148,7 @@ h2 {
 #lock-icon,
 #sidebar-close {
   padding: 10px;
-  color: #4070f4;
+  color: #9EC8B9;
   font-size: 25px;
   cursor: pointer;
   margin-left: -4px;
@@ -176,6 +177,8 @@ h2 {
 .menu_title .title {
   margin-left: 15px;
   transition: all 0.3s ease;
+  color: #5C8374;
+  font-weight: 3000;
 }
 .sidebar.close .title {
   opacity: 0;
@@ -203,11 +206,11 @@ h2 {
   text-decoration: none;
   border-radius: 8px;
   margin-bottom: 8px;
-  color: #707070;
+  color: #5C8374;
 }
 .link:hover {
   color: #fff;
-  background-color: #4070f4;
+  background-color: #5C8374;
 }
 .link span {
   white-space: nowrap;
@@ -230,11 +233,11 @@ h2 {
 }
 .sidebar_profile .name {
   font-size: 18px;
-  color: #333;
+  color: #5C8374;
 }
 .sidebar_profile .email {
   font-size: 15px;
-  color: #333;
+  color: #5C8374;
 }
 #sidebar-open {
   font-size: 30px;
